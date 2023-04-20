@@ -1,0 +1,45 @@
+body{
+ 		margin:0;
+ 		padding: 0;
+ 		background-image:url('img2.jpg');
+ 	    background-size: cover;
+       	width:100%;
+       	height:100vh;
+      	display: flex;
+	 	align-items: center;
+	 	justify-content: center;
+ 	}
+
+ 	.glass
+ 	{
+ 		
+ 		border:1px solid rgba(255,255,255,0.3);
+ 		background: rgba(255,255,255,0.3);
+ 		border-radius: 15px;
+ 		box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+ 		backdrop-filter:blur(4px);
+
+ 	}
+
+ 	p a
+ 	{
+ 		color: white;
+ 		text-decoration: underline;
+ 	}
+
+ 	p a:hover
+ 	{
+ 		color: black;
+ 	}
+
+ 	.btn
+ 	{
+ 		background:#8E44AD;
+ 		color: white;
+ 		filter: brightness(1);
+ 	}
+
+ 	h4,h6
+ 	{
+ 		color: white;
+ 	}

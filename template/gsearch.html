@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+
+<div>
+	<h1></h1>
+</div>
+
+<div class="container bg-warning p-3 mt-5">
+	<form method="Post" action="/gsearch/">{%csrf_token%}
+	<div class="w-75 mx-auto border d-flex">
+		
+	<input type="text" name="keyword" class="form-control">
+		<input type="submit" value="search" name="" class="btn btn-dark">
+		
+	</div>
+	</form>
+</div>
+
+
+
+{%for i in a%}
+<div class="card w-25 p-3 mt-4">
+<a href="{{i}}">{{i}}</a>
+
+</div>
+{%endfor%}
+
+<div class="container mt-5 w-25 mx-auto">
+	<a href="/pdfs/" class="btn btn-dark">PDF</a>
+	<a href="/links/" class="btn btn-dark">links</a>
+	<a href="/videos/" class="btn btn-dark">Videos</a>
+</div>
+
+</body>
+</html>

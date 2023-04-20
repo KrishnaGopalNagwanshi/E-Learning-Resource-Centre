@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{%load static %}
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<style type="text/css">
+	body{
+ 		margin:0;
+ 		padding: 0;
+ 		background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.3)),url('{% static 'pic7.jpg' %}');
+ 	  background-size: cover;
+      width:100%;
+      height:100vh;
+ 	}
+
+ 	h3
+ 	{
+ 	  font-size:55px;
+      font-style: bold;
+      color:white ;
+      font-family:verdana;
+      line-height: 1;
+ 		color:grey;
+      -webkit-text-fill-color:white;
+      -webkit-text-stroke-width:3px;
+      font-weight:bold;
+ 	}
+</style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img src="{% static 'logo.png' %}" width="100px" height="100px">
+  <a class="navbar-brand" href="/">E-Learning Resource</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#"> <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link bg-dark text-light" href="#" id="clock"></a>
+      
+    </div>
+  </div>
+  <a class="nav-item nav-link" href="#">{{request.user.first_name}} {{request.user.last_name}}</a>
+      <a class="nav-item nav-link " href="/logout_call/">Logout</a>
+</nav>
+<div class="w-50 mx-auto mt-5">
+	<h3>E-Learning Resource</h3>
+</div>
+<div class="container  p-3 mt-5">
+	<form method="Post" action="/links/searchlink/">{%csrf_token%}
+	<div class="w-75 mx-auto border d-flex">
+		
+	<input type="text" name="keyword" class="form-control">
+		<input type="submit" value="search" name="" class="btn btn-dark">
+		
+	</div>
+	</form>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 bg-dark">
+			
+			<div class="btn-group-vertical">
+ 			<a href="/pdfs/" class="btn btn-dark"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+			PDF</a>
+
+			<a href="/links/" class="btn btn-dark"><i class="fa fa-external-link" aria-hidden="true"></i>
+			links</a>
+
+			<a href="/videos/" class="btn btn-dark"><i class="fa fa-video-camera" aria-hidden="true"></i>
+			 video</a>
+
+			<a href="/videos/" class="btn btn-light mx-auto mt-4 "><i class="fa fa-history" aria-hidden="true"></i>
+			Recent logs</a>
+			
+			</div>
+			<br>
+			<div class="mt-4 mb-4">
+			{% for i in recent%}
+			<br>
+			<a href="" class="text-light">{{i.log}}</a>
+			{%endfor%}
+			<br>
+			<a href="/clear/">Clear all</a>
+			</div>
+		</div>
+		<div class="col-md-7">
+			{%for i in a%}
+				<div class="card p-3 mt-4">
+					<a href="{{i}}">{{i}}</a>
+				</div>
+			{%endfor%}
+		</div>
+		<div class="col-md-3">
+			{%for i in show%}
+				<div class="card  p-3 mt-4">
+					<a href="{{i.link}}">{{i.link}}</a>
+					<h2>{{i.name}}</h2>
+					<p>{{i.details}}</p>
+						{{i.rating}}
+				</div>
+			{%endfor%}
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="container mt-5 w-25 mx-auto">
+	<a href="/pdfs/" class="btn btn-dark">PDF</a>
+	<a href="/links/" class="btn btn-dark active">links</a>
+	<a href="/videos/" class="btn btn-dark">Videos</a>
+</div>
+
+
+<script type="text/javascript">
+	function showclock()
+	{
+		var c= new Date()
+		var d=c.getDate()
+		var h=c.getHours()
+		var m=c.getMinutes()
+		var s=c.getSeconds()
+		var showtime=String(h)+":"+String(m)+":"+String(s)+":"
+		console.log(showtime)
+		if(h<12)
+		{
+		   document.getElementById('clock').innerHTML=showtime+'AM'	
+		} 
+		else
+		{
+			document.getElementById('clock').innerHTML=showtime+'PM'	
+		}
+        }
+		setInterval(showclock,1000)
+	
+</script>
+</body>
+</html>

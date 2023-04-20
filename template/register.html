@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<title></title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+ 		margin:0;
+ 		padding: 0;
+ 		background-image:url('{% static 'pic3.jpg' %}');
+ 	    background-size: cover;
+       	width:100%;
+       	height:100vh;
+      	display: flex;
+	 	align-items: center;
+	 	justify-content: center;
+ 	}
+
+ 	.glass
+ 	{
+ 		
+ 		border:1px solid rgba(255,255,255,0.3);
+ 		background: transparent;
+ 		border-radius: 15px;
+ 		box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+ 		backdrop-filter:blur(4px);
+
+ 	}
+
+ 	p a
+ 	{
+ 		color: white;
+ 		text-decoration: underline;
+ 	}
+
+ 	p a:hover
+ 	{
+ 		color: black;
+ 	}
+
+ 	.btn
+ 	{
+ 		background:#8E44AD;
+ 		color: white;
+ 		filter: brightness(1);
+ 	}
+
+ 	h4,h6
+ 	{
+ 		color: white;
+ 	}
+	</style>
+</head>
+<body>
+	<div class="container w-25 mx-auto mt-5 p-3" >  
+		<div class="glass p-4">
+			<h4>Hello lets begin!</h4>
+			<h6>Register here.</h6>
+			<form method="Post" action="/register/">{%csrf_token%}
+		<input type="text" name="fn" class="form-control" placeholder="First Name">
+
+		<input type="text" name="ln" class="form-control mt-2" placeholder="Last Name">
+
+		<input type="email" name="eml" class="form-control mt-2" placeholder="Email Id">
+		
+		<input type="password" name="passwd" class="form-control mt-2" placeholder="Password">
+		<input type="text" name="usertype" value="user" hidden="">
+		<input type="submit" name="" class="btn mt-3 form-control">
+		</form>
+		<p><a href="/login_in/">already have an account? login here</a></p>
+		</div>
+	</div>
+</body>
+</html>

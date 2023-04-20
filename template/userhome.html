@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+{%load static %}
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ <style type="text/css">
+ 	body{
+ 		margin:0;
+ 		padding: 0;
+ 		background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.4)),url('{% static 'pic2.jpg' %}');
+ 	  background-size: cover;
+      width:100%;
+      height:100vh;
+ 	}
+ 	.vh{
+ 			
+ 			bottom: 0px;
+ 	}
+
+ 	h3
+ 	{
+ 	  font-size:55px;
+      font-style: bold;
+      color:white ;
+      font-family:verdana;
+      line-height: 1;
+ 		color:grey;
+      -webkit-text-fill-color:white;
+      -webkit-text-stroke-width:3px;
+      font-weight:bold;
+ 	}
+ </style>
+
+</head>
+<body>
+
+
+<div>
+	<h1></h1>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img src="{% static 'logo.png' %}" width="100px" height="100px">
+  <a class="navbar-brand" href="/">E-Learning Resource</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#"> <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link bg-dark text-light" href="" id="clock"></a>
+      
+    </div>
+  </div>
+
+      <a class="nav-item nav-link" href="">{{request.user.first_name}}  {{request.user.last_name}} </a>
+      <a class="nav-item nav-link " href="/">logout</a>
+      
+</nav>
+<div class="w-50 mx-auto mt-5">
+	<h3>E-Learning Resource</h3>
+</div>
+<div class="container p-1 mt-5">
+
+	<form method="Post" action="/pdfs/searchpdf/">{%csrf_token%}
+	<div class="w-75 mx-auto border d-flex">
+		
+	<input type="text" name="keyword" class="form-control">
+		<input type="submit" value="search" name="" class="btn btn-dark">
+		
+	</div>
+	</form>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 bg-dark">
+			
+			<div class="btn-group-vertical">
+ 			<a href="/pdfs/" class="btn btn-dark"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+			PDF</a>
+
+			<a href="/links/" class="btn btn-dark"><i class="fa fa-external-link" aria-hidden="true"></i>
+			links</a>
+
+			<a href="/videos/" class="btn btn-dark"><i class="fa fa-video-camera" aria-hidden="true"></i>
+			 video</a>
+
+			<a href="/videos/" class="btn btn-light mx-auto mt-4 "><i class="fa fa-history" aria-hidden="true"></i>
+			Recent logs</a>
+			
+			</div>
+			<br>
+			<div class="mt-4 mb-4">
+			{% for i in recent%}
+			<br>
+			<a href="" class="text-light">{{i.log}}</a>
+			{%endfor%}
+			<br>
+			<a href="/clear/">Clear all</a>
+			</div>
+		</div>
+		<div class="col-md-7">
+			{%for i in a%}
+				<div class="card p-3 mt-4">
+					<a href="{{i}}">{{i}}</a>
+				</div>
+			{%endfor%}
+		</div>
+		<div class="col-md-3">
+			{%for i in show%}
+				<div class="card  p-3 mt-4">
+					<a href="{{i.file.url}}">{{i.file}}</a>
+					<h2>{{i.name}}</h2>
+					<p>{{i.details}}</p>
+						{{i.rating}}
+				</div>
+			{%endfor%}
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="container mt-5 w-25 mx-auto">
+	
+</div>
+
+<div class="vh">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" ><path fill="transparent" fill-opacity="1" d="M0,32L34.3,37.3C68.6,43,137,53,206,80C274.3,107,343,149,411,149.3C480,149,549,107,617,80C685.7,53,754,43,823,48C891.4,53,960,75,1029,80C1097.1,85,1166,75,1234,64C1302.9,53,1371,43,1406,37.3L1440,32L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z" ></path></svg>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+	function showclock()
+	{
+		var c= new Date()
+		var d=c.getDate()
+		var h=c.getHours()
+		var m=c.getMinutes()
+		var s=c.getSeconds()
+		var showtime=String(h)+":"+String(m)+":"+String(s)+":"
+		console.log(showtime)
+		if(h<12)
+		{
+		   document.getElementById('clock').innerHTML=showtime+'AM'	
+		} 
+		else
+		{
+			document.getElementById('clock').innerHTML=showtime+'PM'	
+		}
+        }
+		setInterval(showclock,1000)
+	
+</script>
+</body>
+</html>
